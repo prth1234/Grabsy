@@ -6,9 +6,9 @@ import InputLabel from '@mui/material/InputLabel';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import visuallyHidden from '@mui/utils/visuallyHidden';
 import { styled } from '@mui/material/styles';
-import { H1, Body } from '@leafygreen-ui/typography';
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -39,10 +39,10 @@ export default function Hero() {
   return (
     <Box
       id="hero"
-      sx={{
+      sx={(theme) => ({
         width: '100%',
         backgroundRepeat: 'no-repeat',
-      }}
+      })}
     >
       <Container
         sx={{
@@ -58,10 +58,11 @@ export default function Hero() {
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
-          <H1
-            style={{
-              fontSize: 'clamp(3rem, 10vw, 4rem)',
-              fontWeight: 700,
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: 'clamp(6rem, 10vw, 4rem)',
+              fontWeight: 900,
               textAlign: 'center',
               background: 'linear-gradient(90deg, #00c6ff, #0072ff, #ff00cc, #ffcc00)',
               backgroundSize: '300% 300%',
@@ -73,23 +74,33 @@ export default function Hero() {
                 0 0 16px rgba(255, 0, 204, 0.3),
                 0 0 20px rgba(255, 204, 0, 0.3)
               `,
+              '@keyframes appleGlow': {
+                '0%': {
+                  backgroundPosition: '0% 50%',
+                },
+                '50%': {
+                  backgroundPosition: '100% 50%',
+                },
+                '100%': {
+                  backgroundPosition: '0% 50%',
+                },
+              },
             }}
           >
             Grabsy Co
-          </H1>
+          </Typography>
 
-          <Body
-            style={{
+          <Typography
+            sx={{
               textAlign: 'center',
-              color: 'var(--lg-gray-600, #6b7280)', // LeafyGreen default gray 600 fallback
-              width: '100%',
-              maxWidth: 600,
+              color: 'text.secondary',
+              width: { sm: '100%', md: '80%' },
               fontSize: '1.25rem',
               fontWeight: 500,
             }}
           >
             Built for Grabbing
-          </Body>
+          </Typography>
 
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -125,35 +136,21 @@ export default function Hero() {
             </Button>
           </Stack>
 
-          <Body
-            as="caption"
-            style={{
-              color: 'var(--lg-gray-600, #6b7280)',
-              textAlign: 'center',
-              marginTop: 8,
-            }}
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ textAlign: 'center' }}
           >
             By clicking &quot;Start now&quot; you agree to our&nbsp;
             <Link href="#" color="primary">
               Terms & Conditions
             </Link>
             .
-          </Body>
+          </Typography>
         </Stack>
 
         <StyledBox id="image" />
       </Container>
-
-      {/* Global keyframes animation style */}
-      <style>
-        {`
-          @keyframes appleGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}
-      </style>
     </Box>
   );
 }
