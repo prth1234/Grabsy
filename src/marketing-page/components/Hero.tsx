@@ -99,7 +99,7 @@ export default function Hero() {
               fontWeight: 500,
             }}
           >
-            Built for Grabbing
+            Built for the Grabs
           </Typography>
 
           <Stack
