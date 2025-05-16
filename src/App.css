@@ -40,3 +40,41 @@
 .read-the-docs {
   color: #888;
 }
+
+  @keyframes subtleGlow {
+    0% {
+      box-shadow:
+        0 0 12px 4px rgba(0, 132, 255, 0.25),
+        0 0 20px 6px rgba(255, 0, 128, 0.2),
+        0 0 28px 10px rgba(0, 255, 200, 0.18);
+      transform: scale(1);
+    }
+    25% {
+      box-shadow:
+        0 0 20px 6px rgba(0, 132, 255, 0.3),
+        0 0 30px 8px rgba(255, 0, 128, 0.25),
+        0 0 38px 14px rgba(0, 255, 200, 0.22);
+      transform: scale(1.015);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 8px rgba(0, 132, 255, 0.35),
+        0 0 40px 10px rgba(255, 0, 128, 0.3),
+        0 0 50px 16px rgba(0, 255, 200, 0.26);
+      transform: scale(1.03);
+    }
+    75% {
+      box-shadow:
+        0 0 20px 6px rgba(0, 132, 255, 0.3),
+        0 0 30px 8px rgba(255, 0, 128, 0.25),
+        0 0 38px 14px rgba(0, 255, 200, 0.22);
+      transform: scale(1.015);
+    }
+    100% {
+      box-shadow:
+        0 0 12px 4px rgba(0, 132, 255, 0.25),
+        0 0 20px 6px rgba(255, 0, 128, 0.2),
+        0 0 28px 10px rgba(0, 255, 200, 0.18);
+      transform: scale(1);
+    }
+  }

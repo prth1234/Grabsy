@@ -6,9 +6,9 @@ import InputLabel from '@mui/material/InputLabel';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import visuallyHidden from '@mui/utils/visuallyHidden';
 import { styled } from '@mui/material/styles';
+import { H1, Body } from '@leafygreen-ui/typography';
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -39,17 +39,10 @@ export default function Hero() {
   return (
     <Box
       id="hero"
-      sx={(theme) => ({
+      sx={{
         width: '100%',
         backgroundRepeat: 'no-repeat',
-
-        backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
-        ...theme.applyStyles('dark', {
-          backgroundImage:
-            'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)',
-        }),
-      })}
+      }}
     >
       <Container
         sx={{
@@ -65,41 +58,39 @@ export default function Hero() {
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
-          <Typography
-            variant="h1"
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: 'center',
-              fontSize: 'clamp(3rem, 10vw, 3.5rem)',
-            }}
-          >
-            Our&nbsp;latest&nbsp;
-            <Typography
-              component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: 'inherit',
-                color: 'primary.main',
-                ...theme.applyStyles('dark', {
-                  color: 'primary.light',
-                }),
-              })}
-            >
-              products
-            </Typography>
-          </Typography>
-          <Typography
-            sx={{
+          <H1
+            style={{
+              fontSize: 'clamp(3rem, 10vw, 4rem)',
+              fontWeight: 700,
               textAlign: 'center',
-              color: 'text.secondary',
-              width: { sm: '100%', md: '80%' },
+              background: 'linear-gradient(90deg, #00c6ff, #0072ff, #ff00cc, #ffcc00)',
+              backgroundSize: '300% 300%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              animation: 'appleGlow 8s ease-in-out infinite',
+              textShadow: `
+                0 0 12px rgba(0, 198, 255, 0.5),
+                0 0 16px rgba(255, 0, 204, 0.3),
+                0 0 20px rgba(255, 204, 0, 0.3)
+              `,
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
-          </Typography>
+            Grabsy Co
+          </H1>
+
+          <Body
+            style={{
+              textAlign: 'center',
+              color: 'var(--lg-gray-600, #6b7280)', // LeafyGreen default gray 600 fallback
+              width: '100%',
+              maxWidth: 600,
+              fontSize: '1.25rem',
+              fontWeight: 500,
+            }}
+          >
+            Built for Grabbing
+          </Body>
+
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={1}
@@ -133,20 +124,36 @@ export default function Hero() {
               Start now
             </Button>
           </Stack>
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ textAlign: 'center' }}
+
+          <Body
+            as="caption"
+            style={{
+              color: 'var(--lg-gray-600, #6b7280)',
+              textAlign: 'center',
+              marginTop: 8,
+            }}
           >
             By clicking &quot;Start now&quot; you agree to our&nbsp;
             <Link href="#" color="primary">
               Terms & Conditions
             </Link>
             .
-          </Typography>
+          </Body>
         </Stack>
+
         <StyledBox id="image" />
       </Container>
+
+      {/* Global keyframes animation style */}
+      <style>
+        {`
+          @keyframes appleGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}
+      </style>
     </Box>
   );
 }
